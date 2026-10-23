@@ -71,13 +71,17 @@ a{color:inherit}
 @media (max-width:520px){.row,div:has(>input[type=range]){flex-wrap:wrap!important}
   .row>.pill:first-child,div:has(>input[type=range])>.pill:first-child{min-width:0!important;flex:1 1 100%}
   input[type=range]{min-width:0!important}.val{min-width:0!important}}
-.val{background:none!important;border:0!important;border-radius:0!important;padding:0!important;font:600 .9rem var(--f-num)!important;font-variant-numeric:tabular-nums;text-align:right;color:var(--ink)}
-.btn{background:var(--paper)!important;border:1px solid var(--line2)!important;border-radius:7px!important;color:var(--ink2)!important;
-  font:700 .82rem var(--f-ui)!important;padding:7px 13px!important;transition:background .15s,border-color .15s;cursor:pointer}
+.val{background:none!important;border:0!important;border-radius:0!important;padding:0!important;font:800 .92rem var(--f-ui)!important;font-variant-numeric:tabular-nums;text-align:right;color:var(--ink);white-space:nowrap}
+.btn{background:var(--paper)!important;border:1px solid var(--line2)!important;border-radius:8px!important;color:var(--ink)!important;
+  font:800 .82rem var(--f-ui)!important;letter-spacing:.005em;padding:8px 14px!important;transition:background .15s,border-color .15s;cursor:pointer}
+.btn:active{transform:translateY(1px)}
 .btn:hover{background:var(--press)!important;border-color:var(--faint)!important}
 .btn.on{background:var(--navy)!important;border-color:var(--navy)!important;color:#fff!important;box-shadow:none}
-.fml{background:var(--sel)!important;border:0!important;border-radius:10px!important;font:400 1.06rem/1.7 var(--f-math)!important;color:var(--ink);padding:10px 14px!important;margin:12px 0!important}
-.info{background:var(--bg)!important;border:1px solid var(--line)!important;border-radius:10px!important;font:500 .84rem/1.8 var(--f-num)!important;color:var(--muted)!important;padding:9px 14px!important}
+.fml{background:var(--sel)!important;border:0!important;border-left:4px solid var(--navy)!important;border-radius:10px!important;font:600 1rem/1.75 var(--f-ui)!important;color:var(--ink);padding:12px 16px!important;margin:12px 0!important}
+.fml b,.fml strong{font-weight:800}
+.fml sub,.fml sup,.info sub,.info sup{font-size:.72em}
+.info{background:var(--bg)!important;border:1px solid var(--line)!important;border-radius:10px!important;font:600 .86rem/1.8 var(--f-ui)!important;font-variant-numeric:tabular-nums;color:var(--muted)!important;padding:10px 14px!important}
+.info b,.info strong{font-weight:800}
 select{font:600 .86rem var(--f-ui)!important;border:1px solid var(--line2)!important;border-radius:7px!important;background:var(--paper)!important;color:var(--ink)!important;padding:6px 8px!important}
 input[type=range]{-webkit-appearance:none;appearance:none;height:24px;background:linear-gradient(var(--line),var(--line)) center/100% 4px no-repeat;cursor:pointer;--pc:var(--blue)}
 input[type=range]::-webkit-slider-runnable-track{height:4px;background:transparent;border-radius:2px}
@@ -95,7 +99,7 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(-
 .sfa-list a{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:baseline;padding:7px 8px;border-radius:8px;text-decoration:none;font:600 13px/1.35 var(--f-ui);color:var(--ink2)}
 .sfa-list a:hover{background:var(--press)}
 .sfa-list a.on{background:var(--sel);color:var(--chip-ink)}
-.sfa-list a i{font:600 11px var(--f-num);font-style:normal;color:var(--faint)}
+.sfa-list a i{font:800 11px var(--f-ui);font-style:normal;color:var(--faint)}
 .sfa-promo{background:var(--navy);color:#fff;border-radius:12px;padding:16px}
 .sfa-promo small{display:block;font:800 10px var(--f-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:6px}
 .sfa-promo b{display:block;font:800 16px/1.3 var(--f-ui);margin-bottom:12px}
@@ -135,8 +139,8 @@ new MutationObserver(ms=>ms.forEach(m=>{if(m.target.classList&&m.target.classLis
 </script>
 <header class="sfa-top"><div class="in">
   <a class="sfa-logo" href="https://sfascienceforall-cell.github.io/simulations/"><i>SFA</i>Science For All</a>
-  <nav class="sfa-nav"><a class="on" href="https://sfascienceforall-cell.github.io/simulations/">Simulations</a><a href="#">Prépa médecine</a></nav>
-  <a class="sfa-cta" href="#">Découvrir la prépa</a></div></header>
+  <nav class="sfa-nav"><a class="on" href="https://sfascienceforall-cell.github.io/simulations/">Simulations</a><a href="https://sfascienceforall-cell.github.io/simulations/#EX">Exercices</a><a href="https://sfascienceforall-cell.github.io/simulations/prepa/">Prépa médecine</a></nav>
+  <a class="sfa-cta" href="https://sfascienceforall-cell.github.io/simulations/prepa/">Découvrir la prépa</a></div></header>
 <div class="sfa-page">
 <nav class="sfa-crumbs" aria-label="Fil d'Ariane"><a href="https://sfascienceforall-cell.github.io/simulations/">Simulations</a>›<a href="https://sfascienceforall-cell.github.io/simulations/#PH11">PH11 · Magnétisme</a>›<b>Règle de la main droite</b></nav>
 <div class="sfa-grid"><main style="min-width:0">
@@ -174,16 +178,22 @@ const wrap=document.getElementById('cvwrap');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0xffffff);
 const camera=new THREE.PerspectiveCamera(45,wrap.clientWidth/wrap.clientHeight,0.1,100);
 const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(window.devicePixelRatio||1);
-renderer.setSize(wrap.clientWidth,wrap.clientHeight);wrap.appendChild(renderer.domElement);
+renderer.setSize(wrap.clientWidth,wrap.clientHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;wrap.appendChild(renderer.domElement);
 
-scene.add(new THREE.AmbientLight(0xffffff,0.62));
-const dl=new THREE.DirectionalLight(0xffffff,0.85);dl.position.set(3,5,4);scene.add(dl);
-const dl2=new THREE.DirectionalLight(0xffffff,0.3);dl2.position.set(-3,2,-3);scene.add(dl2);
+// éclairage doux : ciel/sol + lumière principale avec ombre légère + contre-jour
+scene.add(new THREE.HemisphereLight(0xffffff,0xe6ebf2,0.55));
+scene.add(new THREE.AmbientLight(0xffffff,0.18));
+const dl=new THREE.DirectionalLight(0xffffff,0.8);dl.position.set(2.5,6,3.5);dl.castShadow=true;
+dl.shadow.mapSize.set(1024,1024);dl.shadow.radius=6;dl.shadow.bias=-0.0008;
+Object.assign(dl.shadow.camera,{left:-3.5,right:3.5,top:3.5,bottom:-3.5,near:0.5,far:20});scene.add(dl);
+const dl2=new THREE.DirectionalLight(0xdfe9f7,0.3);dl2.position.set(-3,2,-3);scene.add(dl2);
 
 // sol grille
-const grid=new THREE.GridHelper(6,12,0xdfe2e6,0xf0f2f4);grid.position.y=-1.6;scene.add(grid);
+const grid=new THREE.GridHelper(6,12,0xd3d9e2,0xe9edf2);grid.position.y=-1.6;scene.add(grid);
+const shadowFloor=new THREE.Mesh(new THREE.PlaneGeometry(12,12),new THREE.ShadowMaterial({opacity:0.10}));
+shadowFloor.rotation.x=-Math.PI/2;shadowFloor.position.y=-1.599;shadowFloor.receiveShadow=true;scene.add(shadowFloor);
 
-const skinMat=new THREE.MeshStandardMaterial({color:0xecb98e,roughness:0.75,metalness:0.02});
+const skinMat=new THREE.MeshStandardMaterial({color:0xefbd93,roughness:0.62,metalness:0.0});
 const nailMat=new THREE.MeshStandardMaterial({color:0xf5ddc7,roughness:0.5});
 
 // ---- os arrondi le long de +x ----
@@ -231,17 +241,41 @@ thumbPivot.add(thumb.root);hand.add(thumbPivot);
 
 // ---- vecteurs (flèches 3D) ----
 const ORIG=new THREE.Vector3(0,0,0);
-function arrow(dir,len,color){return new THREE.ArrowHelper(dir.clone().normalize(),ORIG,len,color,0.28,0.16);}
+// flèche pleine (tige cylindrique + pointe conique), même interface que ArrowHelper (setDirection / setLength)
+function arrow(dir,len,color){
+  const mat=new THREE.MeshStandardMaterial({color,roughness:0.42,metalness:0.05});
+  const g=new THREE.Group();
+  const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.035,1,16),mat);
+  const head=new THREE.Mesh(new THREE.ConeGeometry(1,1,24),mat);
+  shaft.castShadow=head.castShadow=true;g.add(shaft);g.add(head);
+  const base=new THREE.Mesh(new THREE.SphereGeometry(0.05,12,12),mat);g.add(base);
+  g.setDirection=function(d){const v=d.clone().normalize();
+    if(v.y>0.99999)g.quaternion.set(0,0,0,1);else if(v.y<-0.99999)g.quaternion.set(1,0,0,0);
+    else g.quaternion.setFromAxisAngle(new THREE.Vector3(v.z,0,-v.x).normalize(),Math.acos(v.y));};
+  g.setLength=function(L,hl,hw){hl=hl||0.28;hw=hw||0.16;const sl=Math.max(0.001,L-hl);
+    shaft.scale.set(1,sl,1);shaft.position.y=sl/2;head.scale.set(hw*0.7,hl,hw*0.7);head.position.y=sl+hl/2;};
+  g.setDirection(dir);g.setLength(len,0.28,0.16);return g;}
 const aArr=arrow(new THREE.Vector3(1,0,0),1.9,0xE24B4A);system.add(aArr);
 const bArr=arrow(new THREE.Vector3(1,0,0),1.9,0x378ADD);system.add(bArr);
 const mArr=arrow(new THREE.Vector3(0,0,1),1.5,0x7F77DD);system.add(mArr);
 
 // étiquettes
-function label(txt,color){const c=document.createElement('canvas');c.width=128;c.height=72;const x=c.getContext('2d');
-  x.fillStyle=color;x.font='bold 46px Mulish,system-ui,sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText(txt,64,38);
-  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false,transparent:true}));
+function label(txt,color){const c=document.createElement('canvas');c.width=256;c.height=144;const x=c.getContext('2d');
+  x.font='800 84px Mulish,system-ui,sans-serif';x.textAlign='center';x.textBaseline='middle';x.lineJoin='round';
+  x.strokeStyle='rgba(255,255,255,0.95)';x.lineWidth=16;x.strokeText(txt,128,76);x.fillStyle=color;x.fillText(txt,128,76);
+  const tex=new THREE.CanvasTexture(c);tex.anisotropy=4;
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,depthTest:false,transparent:true}));sp.renderOrder=10;
   sp.scale.set(0.8,0.45,1);system.add(sp);return sp;}
 const laA=label('ā','#E24B4A'),laB=label('b̄','#378ADD'),laM=label('ā×b̄','#7F77DD');
+// arc de l'angle θ entre ā et b̄ (plan xy)
+const arcMat=new THREE.MeshBasicMaterial({color:0xBA7517,transparent:true,opacity:0.9});
+const arcFill=new THREE.MeshBasicMaterial({color:0xBA7517,transparent:true,opacity:0.12,side:THREE.DoubleSide,depthWrite:false});
+let arcMesh=null,arcSector=null;const laT=label('θ','#BA7517');laT.scale.set(0.6,0.34,1);
+function setArc(thr){if(arcMesh){system.remove(arcMesh);arcMesh.geometry.dispose();system.remove(arcSector);arcSector.geometry.dispose();}
+  const R0=0.95;arcMesh=new THREE.Mesh(new THREE.TorusGeometry(R0,0.018,8,48,thr),arcMat);system.add(arcMesh);
+  arcSector=new THREE.Mesh(new THREE.CircleGeometry(R0,48,0,thr),arcFill);system.add(arcSector);
+  laT.position.set(1.22*Math.cos(thr/2),1.22*Math.sin(thr/2),0);}
+let lastTh=null;
 
 // ---- interaction : orbite + zoom (PAS de rotation auto) ----
 let drag=null;
@@ -264,6 +298,7 @@ function tick(){
   const thr=thDeg*Math.PI/180;
   // b̄ dans le plan xy à l'angle θ ; ā×b̄ selon +z, longueur ∝ sinθ
   bArr.setDirection(new THREE.Vector3(Math.cos(thr),Math.sin(thr),0));
+  if(lastTh!==thDeg){setArc(thr);lastTh=thDeg;}
   const Mmag=Math.sin(thr);mArr.setLength(Math.max(0.25,1.7*Math.abs(Mmag)),0.28,0.16);
   // enroulement des doigts (animation, sans tourner la main)
   if(animOn)t+=0.03;const curl=(Math.sin(t)*0.5+0.5)*1.25+0.06;
@@ -278,13 +313,14 @@ function tick(){
   laM.position.set(0,0,Math.max(0.4,1.9*Math.abs(Mmag)));
   document.getElementById('info').innerHTML='‖ā×b̄‖ = sinθ = <b style="color:#7F77DD">'+Mmag.toFixed(2)+'</b> (max à 90°). 🖱 glisse pour tourner, molette pour zoomer.';
   renderer.render(scene,camera);requestAnimationFrame(tick);}
+system.traverse(o=>{if(o.isMesh&&o.material===skinMat)o.castShadow=true;});
 resize();tick();
 })();
 </script>
 </section></main>
 <aside class="sfa-side">
   <div class="sfa-list"><h2>PH11 · Magnétisme et forces électromagnétiques<span>4 simulations</span></h2><ol><li><a class="on" aria-current="page" href="https://sfascienceforall-cell.github.io/regle-main-droite/"><i>01</i>Règle de la main droite</a></li><li><a href="https://sfascienceforall-cell.github.io/simulations/aimants-laplace/"><i>02</i>Aimants, courants et force de Laplace</a></li><li><a href="https://sfascienceforall-cell.github.io/forces-magn-tique-sur-fils-/"><i>03</i>Forces entre fils parallèles</a></li><li><a href="https://sfascienceforall-cell.github.io/Cyclotron/"><i>04</i>Cyclotron</a></li></ol></div>
-  <div class="sfa-promo"><small>Envie d'aller plus loin ?</small><b>La prépa SFA : le cours complet, les exercices type examen corrigés et le suivi.</b><a href="#">Voir la prépa</a></div>
+  <div class="sfa-promo"><small>Envie d'aller plus loin ?</small><b>La prépa SFA : le cours complet, les exercices type examen corrigés et le suivi.</b><a href="https://sfascienceforall-cell.github.io/simulations/prepa/">Voir la prépa</a></div>
 </aside></div></div>
 <footer class="sfa-foot">Science For All · simulations interactives de physique</footer>
 </body>
